@@ -11,7 +11,6 @@ body.active-modal {
   background-color: #5468ff;
   border: none;
   color: white;
-
   border-radius: 30px;
   font-size: 32px;
   cursor: pointer;
@@ -56,7 +55,7 @@ body.active-modal {
   position: relative;
   background: #fcfcfc;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   max-width: 600px;
   min-width: 300px;
   text-align: center;
