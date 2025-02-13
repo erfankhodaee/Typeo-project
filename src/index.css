@@ -7,9 +7,24 @@ body.active-modal {
   overflow-y: hidden;
 }
 
-
 .btn-modal {
-  color: ;
+  background-color: #5468ff;
+  border: none;
+  color: white;
+
+  border-radius: 30px;
+  font-size: 32px;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-modal:hover {
+  background-color: #8291ff;
 }
 
 .modal {
