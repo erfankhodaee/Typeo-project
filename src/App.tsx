@@ -1,11 +1,16 @@
 import Modal from "./components/Modal/Modal";
-import Timer from "./components/Timer/Timer";
+import NavBar from "./components/NavBar/NavBar";
+import Typing from "./components/Typing/Typing";
 
 function App() {
   return (
     <>
-      <Modal />
-      <Timer/>
+
+        <NavBar/>
+        <Modal />
+
+        <Typing/>
+
     </>
   );
 }

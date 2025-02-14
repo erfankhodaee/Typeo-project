@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import "./timer.css";
+import "./navBar.css";
 import { RxLapTimer } from "react-icons/rx";
 
-const Timer = () => {
+const NavBar = () => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
-    let interval;
+    let interval:number =0;
     if (isRunning) {
       interval = setInterval(() => {
         setTime((second) => second + 1);
@@ -51,4 +51,4 @@ const Timer = () => {
   );
 };
 
-export default Timer;
+export default NavBar;
