@@ -30,7 +30,7 @@ const Modal = () => {
         <div onClick={toggleModal} className="overlay"></div>
         <div className="modal-content">
           <h2 className="modal-title">ساخت تمرین</h2>
-          <textarea
+          <textarea className="modal-textarea"
             onChange={textAreaHandler}
             value={newPracticeText}
           ></textarea>

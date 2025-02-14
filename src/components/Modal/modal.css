@@ -75,7 +75,7 @@ body.active-modal {
   margin: 10px;
 }
 
-textarea {
+.modal-textarea {
   width: 400px;
   height: 200px;
   padding: 10px;

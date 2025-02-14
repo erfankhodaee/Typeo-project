@@ -1,0 +1,53 @@
+.typing {
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.sound {
+  cursor: pointer;
+}
+
+.speakerX-logo,
+.speakerW-logo {
+  font-size: 50px;
+  transition: 0.3s ease;
+}
+
+.speakerX-logo:active,
+.speakerW-logo:active {
+  color: gray;
+  transform: scale(0.9);
+}
+
+.speakerX-logo {
+  color: #ccc;
+}
+
+.restart-logo {
+  font-size: 50px;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.1s ease;
+}
+
+.restart-logo:active {
+  color: gray; 
+  transform: scale(0.9); 
+}
+
+textarea {
+  width: 800px;
+  height: 200px;
+  padding: 10px;
+  font-size: 16px;
+  resize: none;
+  border-radius: 10px;
+  outline: 0;
+  border: solid 2px rgb(104, 106, 255);
+  margin: 0 auto;
+}
