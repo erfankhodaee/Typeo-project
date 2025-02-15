@@ -7,14 +7,14 @@ body.active-modal {
   border: none;
   color: white;
   border-radius: 30px;
-  font-size: 32px;
+  font-size: 22px;
   cursor: pointer;
-  width: 60px;
   height: 60px;
   margin: 20px auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 14px;
 }
 
 .btn-modal:hover {

@@ -23,7 +23,7 @@ const Modal = () => {
   return (
     <>
       <button onClick={toggleModal} className="btn-modal">
-        +
+        ساخت تمرین
       </button>
 
       <div className={`modal ${modal ? "show" : ""}`}>
