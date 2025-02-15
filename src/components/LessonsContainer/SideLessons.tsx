@@ -1,27 +1,19 @@
 import React from "react";
-import styles from "./lessonsContainer.module.css";
+import styles from "./sideLessons.module.css";
 import "purecss/build/pure.css";
 import lessonData from "../../lessonData";
 import { LuBookOpenText } from "react-icons/lu";
-export interface Props {
-  onLessonSelect: () => void;
-}
 
-const LessonContainer = ({ onLessonSelect }:Props) => {
+const SideLessons = () => {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.average}>
-          <div className={styles.averageSpeed}>میانگین سرعت ثبت نشده</div>
-          <div className={styles.stars}>ستاره ها 0</div>
-        </div>
-
         <div className={` ${styles.grid} pure-g`}>
           {lessonData.map((lesson, i) => (
             <div
               key={lesson.id}
-              className={` ${styles.box} pure-u-1-4 pure-u-md-1-5 pure-u-lg-1-7 pure-u-xl-1-8 `}
-              onClick={onLessonSelect}
+              className={` ${styles.box} pure-u-1-2 `}
+              onClick={() => console.log(lesson.title)}
             >
               <h3 className={styles.type}>{lesson.type}</h3>
               <h3 className={styles.title}>{lesson.title}</h3>
@@ -36,4 +28,4 @@ const LessonContainer = ({ onLessonSelect }:Props) => {
   );
 };
 
-export default LessonContainer;
+export default SideLessons;
