@@ -1,4 +1,8 @@
 body {
   font-family: "Rubik", serif;
   direction: rtl;
+  padding: 40px;
+}
+* {
+  box-sizing: border-box;
 }
