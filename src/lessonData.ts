@@ -3,20 +3,23 @@ export interface Lesson {
   title: string;
   description: string;
   type?: string;
+  unlocked: boolean;
 }
 
-const lessonData = [
+const lessonData = <Lesson[]>[
   {
     type: "تمرین",
     id: 1,
     title: "React",
     description: "React is a JavaScript library for building user interfaces",
+    unlocked: true,
   },
   {
     type: "درس",
     id: 2,
     title: "Redux",
     description: "Redux is a predictable state container for JavaScript apps",
+    unlocked: true,
   },
   {
     type: "تمرین",
@@ -24,6 +27,7 @@ const lessonData = [
     title: "TypeScript",
     description:
       "TypeScript is a typed superset of JavaScript that compiles to plain JavaScript",
+      unlocked: true,
   },
   {
     type: "تمرین",
@@ -31,6 +35,7 @@ const lessonData = [
     title: "Node.js",
     description:
       "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine",
+      unlocked: true,
   },
   {
     type: "درس",
@@ -38,6 +43,7 @@ const lessonData = [
     title: "Express",
     description:
       "Express is a minimal and flexible Node.js web application framework",
+      unlocked: true,
   },
   {
     type: "تمرین",
@@ -45,6 +51,7 @@ const lessonData = [
     title: "MongoDB",
     description:
       "MongoDB is a general purpose, document-based, distributed database built for modern application developers and for the cloud era",
+      unlocked: true,
   },
   {
     type: "تمرین",
@@ -52,6 +59,7 @@ const lessonData = [
     title: "PostgreSQL",
     description:
       "PostgreSQL is a powerful, open source object-relational database system",
+      unlocked: true,
   },
   {
     type: "تمرین",
@@ -59,6 +67,7 @@ const lessonData = [
     title: "MySQL",
     description:
       "MySQL is an open-source relational database management system",
+      unlocked: true,
   },
   {
     type: "درس",
@@ -66,6 +75,7 @@ const lessonData = [
     title: "Docker",
     description:
       "Docker is a platform for developers and sysadmins to develop, deploy, and run applications with containers",
+      unlocked: true,
   },
   {
     type: "درس",
@@ -169,6 +179,7 @@ const lessonData = [
     title: "Azure",
     description:
       "Microsoft Azure, commonly referred to as Azure, is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through Microsoft-managed data centers",
+      unlocked: false,
   },
 ];
 

@@ -92,7 +92,7 @@ body.active-modal {
   display: inline-block;
   position: absolute;
   z-index: 1;
-  top: 290px;
+  top: 260px;
   left: 10px;
   padding: 8px;
 }

@@ -20,9 +20,10 @@ const LessonContainer = () => {
               className={` ${styles.box} pure-u-1-4 pure-u-md-1-5 pure-u-lg-1-7 pure-u-xl-1-8 `}
             >
               <h3 className={styles.type}>{lesson.type}</h3>
-              <h3 className={styles.title} >{lesson.title}</h3>
+              <h3 className={styles.title}>{lesson.title}</h3>
               <LuBookOpenText style={{ fontSize: "50px" }} />
               <p className={`${styles.indexAbsolute}`}>{i + 1}</p>
+              {!lesson.unlocked && <div className={styles.blur}></div>}
             </div>
           ))}
         </div>
