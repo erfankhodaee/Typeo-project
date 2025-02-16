@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./navBar.css";
+import styles from "./timer.module.css";
 import { RxLapTimer } from "react-icons/rx";
 
 const NavBar = () => {
@@ -7,7 +7,7 @@ const NavBar = () => {
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
-    let interval:number =0;
+    let interval: number = 0;
     if (isRunning) {
       interval = setInterval(() => {
         setTime((second) => second + 1);
@@ -18,19 +18,22 @@ const NavBar = () => {
     return () => clearInterval(interval); // Cleanup
   }, [isRunning]);
 
-  const startTimer = () => setIsRunning(true);
-  const stopTimer = () => setIsRunning(false);
-  const resetTimer = () => {
-    setIsRunning(false);
-    setTime(0);
-  };
+  // const startTimer = () => setIsRunning(true);
+  // const stopTimer = () => setIsRunning(false);
+  // const resetTimer = () => {
+  //   setIsRunning(false);
+  //   setTime(0);
+  // };
 
   return (
-    <div style={{ textAlign: "center", direction: "rtl" }}>
-      <h1>
-        <RxLapTimer /> زمان: {time} ثانیه
-      </h1>
-      <button
+    <div className={styles.timerContainer}>
+      
+        {" "}
+        <RxLapTimer className={styles.timerLogo} />
+        زمان: {time} ثانیه
+      
+
+      {/* <button
         className="pure-button-primary pure-button"
         onClick={startTimer}
         disabled={isRunning}
@@ -46,7 +49,7 @@ const NavBar = () => {
       </button>
       <button className="pure-button-primary pure-button" onClick={resetTimer}>
         شروع مجدد
-      </button>
+      </button> */}
     </div>
   );
 };

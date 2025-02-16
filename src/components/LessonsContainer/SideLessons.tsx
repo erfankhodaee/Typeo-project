@@ -12,7 +12,7 @@ const SideLessons = () => {
           {lessonData.map((lesson, i) => (
             <div
               key={lesson.id}
-              className={` ${styles.box} pure-u-1-2 `}
+              className={` ${styles.box} pure-u-1 pure-u-md-1-2`}
               onClick={() => console.log(lesson.title)}
             >
               <h3 className={styles.type}>{lesson.type}</h3>

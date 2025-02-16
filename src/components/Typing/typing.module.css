@@ -1,7 +1,5 @@
-.typing {
-}
 
-.logo-container {
+.logoContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,35 +11,42 @@
   cursor: pointer;
 }
 
-.speakerX-logo,
-.speakerW-logo {
+.speakerXlogo,
+.speakerWlogo {
   font-size: 50px;
-  transition: 0.3s ease;
+  transition: 0.1s ease;
 }
 
-.speakerX-logo:active,
-.speakerW-logo:active {
+.speakerXlogo:active,
+.speakerWlogo:active {
   color: gray;
   transform: scale(0.9);
 }
 
-.speakerX-logo {
+.speakerXlogo {
   color: #ccc;
 }
 
-.restart-logo {
+.restartLogo {
   font-size: 50px;
   cursor: pointer;
   transition: color 0.2s ease, transform 0.1s ease;
 }
 
-.restart-logo:active {
+.restartLogo:active {
   color: gray; 
   transform: scale(0.9); 
 }
 
-textarea {
-  width: 800px;
+.stats{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.textArea {
+  width: 60%;
   height: 200px;
   padding: 10px;
   font-size: 16px;

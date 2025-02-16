@@ -1,0 +1,10 @@
+.accuracyLogo{
+  font-size: 45px;
+}
+
+.accuracyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}

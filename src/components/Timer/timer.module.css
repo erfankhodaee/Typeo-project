@@ -1,0 +1,15 @@
+
+.pure-button{
+  margin: 0 10px;
+}
+
+.timerContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.timerLogo{
+  font-size: 45px;
+}
