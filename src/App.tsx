@@ -10,7 +10,7 @@ function App() {
   const [lessonLeft, setLessonLeft] = useState(false);
 
   return (
-    <>
+    <div className="app-container">
       {lessonLeft && (
         <>
           <SideLessons />
@@ -23,7 +23,7 @@ function App() {
         </>
       )}
       <Modal />
-    </>
+    </div>
   );
 }
 
