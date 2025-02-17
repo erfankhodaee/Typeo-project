@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import styles from "./typing.module.css";
 import { HiMiniSpeakerWave } from "react-icons/hi2";
 import { HiMiniSpeakerXMark } from "react-icons/hi2";
@@ -9,62 +9,102 @@ import Accuracy from "../Accuracy/Accuracy";
 import { Lesson } from "../../lessonData";
 
 interface Props {
-	text?: string;
-	title?: string;
+  text?: string;
+  title?: string;
 }
 
 const Typing = ({ text = "", title }: Props) => {
-	const [typeText, setTypeText] = useState(text);
-	const [lessonTitle, setLessonTitle] = useState(title);
-	const [sound, setSound] = useState(false);
-	const [invisibleInput, setInvisibleInput] = useState('');
-  
+  const [typeText, setTypeText] = useState(text);
+  const [lessonTitle, setLessonTitle] = useState(title);
+  const [sound, setSound] = useState(false);
+  const [invisibleInput, setInvisibleInput] = useState("");
 
-	const handleTextArea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		setTypeText(e.target.value);
-	};
+  const textRef = useRef(typeText);
 
-	const soundToggle = () => {
-		setSound(!sound);
-	};
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const invisbleInputHandler =(e)=>{
-    setInvisibleInput(e.target.value)
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
 
-  }
+    const handleKeyDown = () => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    };
 
-	return (
-		<div className={styles.typing}>
-			<div className={styles.logoContainer}>
-				<div className={styles.sound} onClick={soundToggle}>
-					{sound ? (
-						<HiMiniSpeakerWave className={styles.speakerWlogo} />
-					) : (
-						<HiMiniSpeakerXMark className={styles.speakerXlogo} />
-					)}
-				</div>
+    document.addEventListener("keydown", handleKeyDown);
 
-				<div className={styles.restart}>
-					<VscDebugRestart className={styles.restartLogo} />
-				</div>
-			</div>
-			<div className={styles.stats}>
-				<Timer />
-				<Speed />
-				<Accuracy />
-			</div>
-			<h2>{lessonTitle}</h2>
-			<textarea
-				disabled
-				name=""
-				id=""
-				value={typeText}
-				onChange={handleTextArea}
-				className={styles.textArea}
-			></textarea>
-			<input type="text" value={invisibleInput} onChange={invisbleInputHandler} />
-		</div>
-	);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  const soundToggle = () => {
+    setSound(!sound);
+  };
+
+  const invisbleInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInvisibleInput(e.target.value);
+    // if (
+    //   invisibleInput === textRef.current.split("")[invisibleInput.length - 1]
+    // ) {
+
+    //   setInvisibleInput("");
+    // }
+  };
+
+  return (
+    <div className={styles.typing}>
+      <div className={styles.logoContainer}>
+        <div className={styles.sound} onClick={soundToggle}>
+          {sound ? (
+            <HiMiniSpeakerWave className={styles.speakerWlogo} />
+          ) : (
+            <HiMiniSpeakerXMark className={styles.speakerXlogo} />
+          )}
+        </div>
+
+        <div className={styles.restart}>
+          <VscDebugRestart className={styles.restartLogo} />
+        </div>
+      </div>
+      <div className={styles.stats}>
+        <Timer />
+        <Speed />
+        <Accuracy />
+      </div>
+      <h2>{lessonTitle}</h2>
+      <div className={styles.textArea}>
+        {typeText.split("").map((char, index) => {
+          if (index < invisibleInput.length) {
+            if (char === invisibleInput[index]) {
+              return (
+                <span key={index} className={styles.correctChar}>
+                  {char}
+                </span>
+              );
+            } else {
+              return (
+                <span key={index} className={styles.incorrectChar}>
+                  {char}
+                </span>
+              );
+            }
+          }
+          return <span key={index}>{char}</span>;
+        })}
+      </div>
+      <input
+        ref={inputRef}
+        type="text"
+        value={invisibleInput}
+        onChange={invisbleInputHandler}
+				className={styles.invisibleInput}
+      />
+    </div>
+  );
 };
 
 export default memo(Typing);
