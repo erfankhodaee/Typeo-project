@@ -11,7 +11,7 @@ const lessonData = <Lesson[]>[
     type: "تمرین",
     id: 1,
     title: "React",
-    description: "React is a JavaScript library for building user interfaces",
+    description: "هر که بامش بیش برفش بیشتر",
     unlocked: true,
   },
   {
