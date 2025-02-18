@@ -16,8 +16,13 @@ interface Props {
 const Typing = ({ text = "", title }: Props) => {
   const [typeText, setTypeText] = useState(text);
   const [lessonTitle, setLessonTitle] = useState(title);
-  const [sound, setSound] = useState(false);
+  const [sound, setSound] = useState(true);
   const [invisibleInput, setInvisibleInput] = useState("");
+  const singleTick = new Audio("/src/Audio/key-press-263640.mp3");
+  const errorTick = new Audio(
+    "/src/Audio/soft-balloon-pop-88692.mp3"
+  );
+  errorTick.volume = 0.5;
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -43,14 +48,17 @@ const Typing = ({ text = "", title }: Props) => {
     setSound(!sound);
   };
 
-  const invisbleInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInvisibleInput(e.target.value);
-    // if (
-    //   invisibleInput === textRef.current.split("")[invisibleInput.length - 1]
-    // ) {
-
-    //   setInvisibleInput("");
-    // }
+  const invisibleInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setInvisibleInput(newValue);
+    if (sound && newValue.length > invisibleInput.length) {
+      const x = newValue.length - 1;
+      if (newValue.slice(-1) === typeText[x]) {
+        singleTick.play();
+      } else {
+        errorTick.play();
+      }
+    }
   };
 
   return (
@@ -90,7 +98,7 @@ const Typing = ({ text = "", title }: Props) => {
                 </span>
               );
             }
-          }else if (index == invisibleInput.length){
+          } else if (index == invisibleInput.length) {
             return (
               <span key={index} className={styles.currentChar}>
                 {char}
@@ -104,8 +112,8 @@ const Typing = ({ text = "", title }: Props) => {
         ref={inputRef}
         type="text"
         value={invisibleInput}
-        onChange={invisbleInputHandler}
-				className={styles.invisibleInput}
+        onChange={invisibleInputHandler}
+        className={styles.invisibleInput}
       />
     </div>
   );

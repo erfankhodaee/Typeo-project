@@ -8,23 +8,23 @@ import { Lesson } from "./lessonData";
 import SideLessons from "./components/LessonsContainer/SideLessons";
 
 function App() {
-	const [lessonLeft, setLessonLeft] = useState(false);
+	const [lessonsLeft, setLessonsLeft] = useState(false);
 	const [currentLesson, setCurrentLesson] = useState<Lesson | null>();
 
 	const onLessonSelect = (lesson: Lesson) => {
-		setLessonLeft(true);
+		setLessonsLeft(true);
 		setCurrentLesson(lesson);
 	};
 
 	return (
 		<div className="app-container">
-			{lessonLeft && (
+			{lessonsLeft && (
 				<>
 					<SideLessons onLessonSelect={onLessonSelect} />
 					<Typing title={currentLesson?.title} text={currentLesson?.description} key={currentLesson?.id} />
 				</>
 			)}
-			{!lessonLeft && (
+			{!lessonsLeft && (
 				<>
 					<LessonContainer onLessonSelect={onLessonSelect} />
 				</>
