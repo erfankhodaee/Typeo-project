@@ -6,7 +6,6 @@ import { VscDebugRestart } from "react-icons/vsc";
 import Timer from "../Timer/Timer";
 import Speed from "../Speed/Speed";
 import Accuracy from "../Accuracy/Accuracy";
-import { Lesson } from "../../lessonData";
 
 interface Props {
   text?: string;
@@ -18,10 +17,10 @@ const Typing = ({ text = "", title }: Props) => {
   const [lessonTitle, setLessonTitle] = useState(title);
   const [sound, setSound] = useState(true);
   const [invisibleInput, setInvisibleInput] = useState("");
+  const [timeRunning, setTimeRunning] = useState(false);
+
   const singleTick = new Audio("/src/Audio/key-press-263640.mp3");
-  const errorTick = new Audio(
-    "/src/Audio/soft-balloon-pop-88692.mp3"
-  );
+  const errorTick = new Audio("/src/Audio/soft-balloon-pop-88692.mp3");
   errorTick.volume = 0.5;
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -50,7 +49,11 @@ const Typing = ({ text = "", title }: Props) => {
 
   const invisibleInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
+
     setInvisibleInput(newValue);
+    if (newValue.length > 0) {
+      setTimeRunning(true);
+    }
     if (sound && newValue.length > invisibleInput.length) {
       const x = newValue.length - 1;
       if (newValue.slice(-1) === typeText[x]) {
@@ -77,7 +80,7 @@ const Typing = ({ text = "", title }: Props) => {
         </div>
       </div>
       <div className={styles.stats}>
-        <Timer />
+        <Timer timeRunning={timeRunning} />
         <Speed />
         <Accuracy />
       </div>
