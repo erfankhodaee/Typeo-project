@@ -19,8 +19,6 @@ const Typing = ({ text = "", title }: Props) => {
   const [sound, setSound] = useState(false);
   const [invisibleInput, setInvisibleInput] = useState("");
 
-  const textRef = useRef(typeText);
-
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -92,6 +90,12 @@ const Typing = ({ text = "", title }: Props) => {
                 </span>
               );
             }
+          }else if (index == invisibleInput.length){
+            return (
+              <span key={index} className={styles.currentChar}>
+                {char}
+              </span>
+            );
           }
           return <span key={index}>{char}</span>;
         })}

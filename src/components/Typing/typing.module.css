@@ -54,7 +54,7 @@
   border: none;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   color: black;
-  font-size: 24px;
+  font-size: 28px;
   background-color: rgb(235, 235, 235);
 }
 
@@ -66,6 +66,11 @@
 .incorrectChar{
   color: red;
   background-color: rgb(255, 196, 196);
+}
+
+.currentChar{
+  background-color: #858585;
+  transition: .3s ease;
 }
 
 .invisibleInput{
