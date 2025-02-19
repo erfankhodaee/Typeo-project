@@ -1,12 +1,13 @@
-import React from "react";
-import styles from "./sideLessons.module.css";
 import "purecss/build/pure.css";
-import lessonData, { Lesson } from "../../lessonData";
 import { LuBookOpenText } from "react-icons/lu";
+import lessonData, { Lesson } from "../../lessonData";
+import styles from "./sideLessons.module.css";
+import { memo } from "react";
 interface Props {
 	onLessonSelect: (lesson: Lesson) => void;
 }
 const SideLessons = ({ onLessonSelect }: Props) => {
+	console.log("first");
 	return (
 		<>
 			<div className={styles.container}>
@@ -30,4 +31,4 @@ const SideLessons = ({ onLessonSelect }: Props) => {
 	);
 };
 
-export default SideLessons;
+export default memo(SideLessons);

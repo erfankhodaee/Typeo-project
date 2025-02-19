@@ -1,34 +1,22 @@
-import { useEffect, useState } from "react";
-import styles from "./timer.module.css";
 import { RxLapTimer } from "react-icons/rx";
+import useTimeCalculate from "../../hooks/useTimeCalculate";
+import styles from "./timer.module.css";
+import { memo } from "react";
 
 interface Props {
-  timeRunning: boolean;
+	time: number;
 }
 
-const Timer = ({ timeRunning }: Props) => {
-  const [time, setTime] = useState(0);
+const Timer = ({ time }: Props) => {
 
-  useEffect(() => {
-    let interval: number | undefined;
 
-    if (timeRunning) {
-      interval = setInterval(() => {
-        setTime((second) => second + 1);
-      }, 1000);
-    } else {
-      clearInterval(interval);
-    }
 
-    return () => clearInterval(interval);
-  }, [timeRunning]);
-
-  return (
-    <div className={styles.timerContainer}>
-      <RxLapTimer className={styles.timerLogo} />
-      زمان: {time} ثانیه
-    </div>
-  );
+	return (
+		<div className={styles.timerContainer}>
+			<RxLapTimer className={styles.timerLogo} />
+			زمان: {time} ثانیه
+		</div>
+	);
 };
 
-export default Timer;
+export default memo(Timer);

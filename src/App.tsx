@@ -11,6 +11,7 @@ function App() {
 	const [lessonsLeft, setLessonsLeft] = useState(false);
 	const [currentLesson, setCurrentLesson] = useState<Lesson | null>();
 
+
 	const onLessonSelect = (lesson: Lesson) => {
 		setLessonsLeft(true);
 		setCurrentLesson(lesson);
@@ -21,7 +22,11 @@ function App() {
 			{lessonsLeft && (
 				<>
 					<SideLessons onLessonSelect={onLessonSelect} />
-					<Typing title={currentLesson?.title} text={currentLesson?.description} key={currentLesson?.id} />
+					<Typing
+						title={currentLesson?.title}
+						text={currentLesson?.description}
+						key={currentLesson?.id}
+					/>
 				</>
 			)}
 			{!lessonsLeft && (
@@ -29,7 +34,7 @@ function App() {
 					<LessonContainer onLessonSelect={onLessonSelect} />
 				</>
 			)}
-			<Modal />
+			<Modal  />
 		</div>
 	);
 }

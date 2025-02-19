@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   width: 400px;
-  margin: 0 auto;
+  margin: 0 auto 30px;
 }
 
 .sound {
@@ -46,9 +46,9 @@
 
 .textArea {
   width: 60%;
-  height: 200px;
+  min-height: 400px;
   padding: 30px;
-  font-size: 16px;
+  font-size: 20px;
   resize: none;
   margin: 0 auto;
   border: none;
