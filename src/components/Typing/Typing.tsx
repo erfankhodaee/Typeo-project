@@ -7,6 +7,7 @@ import Speed from "../Speed/Speed";
 import Timer from "../Timer/Timer";
 import styles from "./typing.module.css";
 import useAccuracyCalculate from "../../hooks/useAccuracyCalculate";
+import useSpeedCalculate from "../../hooks/useSpeedCalculate";
 
 interface Props {
   text?: string;
@@ -22,6 +23,7 @@ const Typing = ({ text = "", title }: Props) => {
 
   const { time } = useTimeCalculate(timeRunning);
   const { accuracy, mistake } = useAccuracyCalculate(correctChar, keysCount);
+  const { speed } = useSpeedCalculate(time, keysCount);
 
   const singleTick = new Audio("/src/Audio/key-press-263640.mp3");
   const errorTick = new Audio("/src/Audio/soft-balloon-pop-88692.mp3");
@@ -72,7 +74,7 @@ const Typing = ({ text = "", title }: Props) => {
     }
     if (newValue.length === text.length) {
       alert(
-        `you compeleted in ${time} seconds, with accuracy of ${accuracy} and you had ${mistake} mistakes`
+        `you compeleted in ${time} seconds, with accuracy of ${accuracy}% and you had ${mistake} mistakes, your wpm is ${speed}`
       );
     }
   };
@@ -104,7 +106,7 @@ const Typing = ({ text = "", title }: Props) => {
       </div>
       <div className={styles.stats}>
         <Timer time={time} />
-        <Speed time={time} keysCount={keysCount} />
+        <Speed speed={speed} />
         <Accuracy accuracy={accuracy} mistake={mistake} />
       </div>
       <h2>{title}</h2>
