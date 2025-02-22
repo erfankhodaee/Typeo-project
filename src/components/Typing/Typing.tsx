@@ -21,7 +21,7 @@ const Typing = ({ text = "", title }: Props) => {
   const [correctChar, setCorrectChar] = useState(0);
 
   const { time } = useTimeCalculate(timeRunning);
-  const { accuracy } = useAccuracyCalculate(correctChar, keysCount);
+  const { accuracy, mistake } = useAccuracyCalculate(correctChar, keysCount);
 
   const singleTick = new Audio("/src/Audio/key-press-263640.mp3");
   const errorTick = new Audio("/src/Audio/soft-balloon-pop-88692.mp3");
@@ -103,7 +103,7 @@ const Typing = ({ text = "", title }: Props) => {
       <div className={styles.stats}>
         <Timer time={time} />
         <Speed time={time} keysCount={keysCount} />
-        <Accuracy accuracy={accuracy} />
+        <Accuracy accuracy={accuracy} mistake={mistake} />
       </div>
       <h2>{title}</h2>
       <div className={styles.textArea}>

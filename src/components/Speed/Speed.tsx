@@ -1,7 +1,5 @@
-import styles from "./speed.module.css";
 import { MdSpeed } from "react-icons/md";
-import useTimeCalculate from "../../hooks/useTimeCalculate";
-import useSpeedCalculate from "../../hooks/useSpeedCalculate";
+import styles from "./speed.module.css";
 
 interface Props {
   time: number;
