@@ -1,9 +1,8 @@
-import { time } from "./useTimeCalculate";
 
-import React from 'react'
 
-const useAccuracyCalculate = () => {
- 
-}
+const useAccuracyCalculate = (correct: number, all: number) => {
+  const accuracy = ((correct / all) * 100).toFixed(0);
+  return { accuracy };
+};
 
-export default useAccuracyCalculate
+export default useAccuracyCalculate;
