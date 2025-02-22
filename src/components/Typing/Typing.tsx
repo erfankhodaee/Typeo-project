@@ -71,7 +71,9 @@ const Typing = ({ text = "", title }: Props) => {
       }
     }
     if (newValue.length === text.length) {
-      alert("tamam");
+      alert(
+        `you compeleted in ${time} seconds, with accuracy of ${accuracy} and you had ${mistake} mistakes`
+      );
     }
   };
 
