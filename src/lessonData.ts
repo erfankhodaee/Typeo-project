@@ -2,7 +2,7 @@ export interface Lesson {
   id: number;
   title: string;
   description: string;
-  type?: string;
+  type: string;
   unlocked: boolean;
 }
 
@@ -27,7 +27,7 @@ const lessonData = <Lesson[]>[
     title: "TypeScript",
     description:
       "TypeScript is a typed superset of JavaScript that compiles to plain JavaScript",
-      unlocked: true,
+    unlocked: true,
   },
   {
     type: "تمرین",
@@ -35,7 +35,7 @@ const lessonData = <Lesson[]>[
     title: "Node.js",
     description:
       "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine",
-      unlocked: true,
+    unlocked: true,
   },
   {
     type: "درس",
@@ -43,7 +43,7 @@ const lessonData = <Lesson[]>[
     title: "Express",
     description:
       "Express is a minimal and flexible Node.js web application framework",
-      unlocked: true,
+    unlocked: true,
   },
   {
     type: "تمرین",
@@ -51,7 +51,7 @@ const lessonData = <Lesson[]>[
     title: "MongoDB",
     description:
       "MongoDB is a general purpose, document-based, distributed database built for modern application developers and for the cloud era",
-      unlocked: true,
+    unlocked: true,
   },
   {
     type: "تمرین",
@@ -59,7 +59,7 @@ const lessonData = <Lesson[]>[
     title: "PostgreSQL",
     description:
       "PostgreSQL is a powerful, open source object-relational database system",
-      unlocked: true,
+    unlocked: true,
   },
   {
     type: "تمرین",
@@ -67,7 +67,7 @@ const lessonData = <Lesson[]>[
     title: "MySQL",
     description:
       "MySQL is an open-source relational database management system",
-      unlocked: true,
+    unlocked: true,
   },
   {
     type: "درس",
@@ -75,7 +75,7 @@ const lessonData = <Lesson[]>[
     title: "Docker",
     description:
       "Docker is a platform for developers and sysadmins to develop, deploy, and run applications with containers",
-      unlocked: true,
+    unlocked: true,
   },
   {
     type: "درس",
@@ -179,7 +179,7 @@ const lessonData = <Lesson[]>[
     title: "Azure",
     description:
       "Microsoft Azure, commonly referred to as Azure, is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through Microsoft-managed data centers",
-      unlocked: false,
+    unlocked: false,
   },
 ];
 

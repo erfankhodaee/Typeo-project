@@ -1,8 +1,7 @@
-import React from "react";
-import styles from "./lessonsContainer.module.css";
 import "purecss/build/pure.css";
-import lessonData, { Lesson } from "../../lessonData";
 import { LuBookOpenText } from "react-icons/lu";
+import lessonData, { Lesson } from "../../lessonData";
+import styles from "./lessonsContainer.module.css";
 export interface Props {
 	onLessonSelect: (lesson: Lesson) => void;
 }

@@ -1,7 +1,6 @@
-import { RxLapTimer } from "react-icons/rx";
-import useTimeCalculate from "../../hooks/useTimeCalculate";
-import styles from "./timer.module.css";
 import { memo } from "react";
+import { RxLapTimer } from "react-icons/rx";
+import styles from "./timer.module.css";
 
 interface Props {
 	time: number;
