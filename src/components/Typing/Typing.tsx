@@ -31,6 +31,31 @@ const Typing = ({ text = "", title }: Props) => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const practiceArea = text.split("").map((char, index) => {
+    if (index < invisibleInput.length) {
+      if (char === invisibleInput[index]) {
+        return (
+          <span key={index} className={styles.correctChar}>
+            {char}
+          </span>
+        );
+      } else {
+        return (
+          <span key={index} className={styles.incorrectChar}>
+            {char}
+          </span>
+        );
+      }
+    } else if (index === invisibleInput.length) {
+      return (
+        <span key={index} className={styles.currentChar}>
+          {char}
+        </span>
+      );
+    }
+    return <span key={index}>{char}</span>;
+  });
+
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -110,32 +135,7 @@ const Typing = ({ text = "", title }: Props) => {
         <Accuracy accuracy={accuracy} mistake={mistake} />
       </div>
       <h2>{title}</h2>
-      <div className={styles.textArea}>
-        {text.split("").map((char, index) => {
-          if (index < invisibleInput.length) {
-            if (char === invisibleInput[index]) {
-              return (
-                <span key={index} className={styles.correctChar}>
-                  {char}
-                </span>
-              );
-            } else {
-              return (
-                <span key={index} className={styles.incorrectChar}>
-                  {char}
-                </span>
-              );
-            }
-          } else if (index === invisibleInput.length) {
-            return (
-              <span key={index} className={styles.currentChar}>
-                {char}
-              </span>
-            );
-          }
-          return <span key={index}>{char}</span>;
-        })}
-      </div>
+      <div className={styles.textArea}>{practiceArea}</div>
       <input
         ref={inputRef}
         type="text"
