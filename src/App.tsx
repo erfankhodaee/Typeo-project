@@ -10,31 +10,55 @@ import SideLessons from "./components/LessonsContainer/SideLessons";
 function App() {
 	const [lessonsLeft, setLessonsLeft] = useState(false);
 	const [currentLesson, setCurrentLesson] = useState<Lesson | null>();
+	const [isShowScore, setIsShowScore] = useState(false)
+	const [score, setScore] = useState<Lesson>(Object)
 
 
 	const onLessonSelect = (lesson: Lesson) => {
 		setLessonsLeft(true);
 		setCurrentLesson(lesson);
+		setIsShowScore(false)
 	};
 
+	if (isShowScore) {
+
+	}
+
+
 	return (
+
 		<div className="app-container">
-			{lessonsLeft && (
+			{!lessonsLeft && (
+				<>
+					<LessonContainer onLessonSelect={onLessonSelect} />
+				</>
+			)}
+			{isShowScore && (
+				<>
+					<SideLessons onLessonSelect={onLessonSelect} />
+					<div>
+						{Object.keys(score).map(function (key) { return <div>{key}: {score[key]}</div>; })}
+					</div>
+				</>
+
+			)}
+			{(lessonsLeft && !isShowScore) && (
 				<>
 					<SideLessons onLessonSelect={onLessonSelect} />
 					<Typing
 						title={currentLesson?.title}
 						text={currentLesson?.description}
 						key={currentLesson?.id}
+						id={currentLesson?.id}
+						setIsShowScore={setIsShowScore}
+						setScore={setScore}
+						score={score}
+
 					/>
 				</>
 			)}
-			{!lessonsLeft && (
-				<>
-					<LessonContainer onLessonSelect={onLessonSelect} />
-				</>
-			)}
-			<Modal  />
+
+			<Modal />
 		</div>
 	);
 }

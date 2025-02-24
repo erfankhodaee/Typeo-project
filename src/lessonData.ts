@@ -1,9 +1,15 @@
+import { useState } from "react";
+
 export interface Lesson {
   id: number;
   title: string;
   description: string;
   type: string;
   unlocked: boolean;
+  time?: null | number;
+  speed?: null | number;
+  mistakes?: null | number;
+  accuracy?: null | string;
 }
 
 const lessonData = <Lesson[]>[
@@ -13,12 +19,13 @@ const lessonData = <Lesson[]>[
     title: "React",
     description: "هر که بامش بیش برفش بیشتر",
     unlocked: true,
+    speed: null
   },
   {
     type: "درس",
     id: 2,
     title: "Redux",
-    description: "Redux is a predictable state container for JavaScript apps",
+    description: "Redux is a state container",
     unlocked: true,
   },
   {
@@ -183,4 +190,17 @@ const lessonData = <Lesson[]>[
   },
 ];
 
-export default lessonData;
+const useLessonData = () => {
+
+  const [lessonsData, setLessonsData] = useState<Lesson[]>(lessonData)
+  console.log(lessonsData)
+
+  return { lessonsData, setLessonsData }
+
+}
+
+export default useLessonData
+
+
+
+

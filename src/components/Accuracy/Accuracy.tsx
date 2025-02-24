@@ -2,7 +2,7 @@ import { TbTargetArrow } from "react-icons/tb";
 import styles from "./accuracy.module.css";
 
 interface AccuracyProps {
-  accuracy: number;
+  accuracy: string;
   mistake: number;
 }
 

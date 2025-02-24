@@ -1,12 +1,15 @@
 import "purecss/build/pure.css";
 import { LuBookOpenText } from "react-icons/lu";
-import lessonData, { Lesson } from "../../lessonData";
+import useLessonData, { Lesson } from "../../lessonData";
+
 import styles from "./lessonsContainer.module.css";
 export interface Props {
 	onLessonSelect: (lesson: Lesson) => void;
 }
 
 const LessonContainer = ({ onLessonSelect }: Props) => {
+
+	const { lessonsData } = useLessonData()
 	return (
 		<>
 			<div className={styles.container}>
@@ -16,7 +19,7 @@ const LessonContainer = ({ onLessonSelect }: Props) => {
 				</div>
 
 				<div className={` ${styles.grid} pure-g`}>
-					{lessonData.map((lesson, i) => (
+					{lessonsData.map((lesson, i) => (
 						<div
 							key={lesson.id}
 							className={` ${styles.box} pure-u-sm-1-4 pure-u-md-1-6 pure-u-lg-1-7 pure-u-xl-1-8 `}
