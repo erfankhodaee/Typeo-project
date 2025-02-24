@@ -6,3 +6,13 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.scoreContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 500px;
+  margin: 100px auto;
+  justify-content: center;
+  align-items: center;
+}

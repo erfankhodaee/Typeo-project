@@ -10,7 +10,6 @@ import Speed from "../Speed/Speed";
 import Timer from "../Timer/Timer";
 import styles from "./typing.module.css";
 
-
 interface Props {
   text?: string;
   title?: string;
@@ -20,13 +19,20 @@ interface Props {
   score: Lesson;
 }
 
-const Typing = ({ text = "", title, id, setIsShowScore, score, setScore }: Props) => {
+const Typing = ({
+  text = "",
+  title,
+  id,
+  setIsShowScore,
+  score,
+  setScore,
+}: Props) => {
   const [sound, setSound] = useState(true);
   const [invisibleInput, setInvisibleInput] = useState("");
   const [timeRunning, setTimeRunning] = useState(false);
   const [keysCount, setKeysCount] = useState(0);
   const [correctChar, setCorrectChar] = useState(0);
-  const [userMistake, setUserMistake] = useState(0)
+  const [userMistake, setUserMistake] = useState(0);
 
   // calling hooks to calculate stats of this single practice
   const { time } = useTimeCalculate(timeRunning);
@@ -90,9 +96,9 @@ const Typing = ({ text = "", title, id, setIsShowScore, score, setScore }: Props
 
   // getting data from dummy data
 
-  const { lessonsData, setLessonsData } = useLessonData()
+  const { lessonsData, setLessonsData } = useLessonData();
 
-  // handling logic for invisbleinput 
+  // handling logic for invisbleinput
   const invisibleInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
 
@@ -110,21 +116,29 @@ const Typing = ({ text = "", title, id, setIsShowScore, score, setScore }: Props
       } else {
         sound ? errorTick.play() : null;
         // setInvisibleInput(newValue.slice(0, -1));
-        setUserMistake(prev => prev + 1)
+        setUserMistake((prev) => prev + 1);
         if (userMistake === 3) {
-          setUserMistake(0)
-          alert('داری اشتباه میزنی')
+          setUserMistake(0);
+          alert("داری اشتباه میزنی");
         }
       }
     }
     if (newValue.length === text.length) {
-      setLessonsData(prev => prev.map((item) => {
-        if (item.id === id) {
-          return { ...item, speed: +speed, accuracy: accuracy, time: time, mistakes: mistake }
-        } else {
-          return item
-        }
-      })
+      setLessonsData(
+        (prev) =>
+          prev.map((item) => {
+            if (item.id === id) {
+              return {
+                ...item,
+                speed: +speed,
+                accuracy: accuracy,
+                time: time,
+                mistakes: mistake,
+              };
+            } else {
+              return item;
+            }
+          })
         // prev.map(lesson => {
         //   if (lesson.id === id) {
         //     lesson.speed = +speed
@@ -132,13 +146,15 @@ const Typing = ({ text = "", title, id, setIsShowScore, score, setScore }: Props
         //     lesson.time = time
         //   }
         // })
-
-      )
-      setIsShowScore(true)
+      );
+      setIsShowScore(true);
       setScore({
-        ...score, speed: +speed, accuracy: accuracy, mistakes: mistake,
-        time: time
-      })
+        ...score,
+        speed: +speed,
+        accuracy: accuracy,
+        mistakes: mistake,
+        time: time,
+      });
     }
   };
 
