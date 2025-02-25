@@ -1,9 +1,13 @@
+.typing{
+  height: 100vh;
+}
+
 .logoContainer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 400px;
-  margin: 0 auto 30px;
+  margin: 20px auto 30px;
 }
 
 .sound {

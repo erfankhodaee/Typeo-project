@@ -37,7 +37,7 @@ const Typing = ({
   // calling hooks to calculate stats of this single practice
   const { time } = useTimeCalculate(timeRunning);
   const { accuracy, mistake } = useAccuracyCalculate(correctChar, keysCount);
-  const { speed } = useSpeedCalculate(time, keysCount);
+  const { speed } = useSpeedCalculate(time, correctChar);
 
   // addign sounds
   const singleTick = new Audio("/src/Audio/key-press-263640.mp3");

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./modal.css";
+import styles from "./modal.module.css";
 
 const Modal = () => {
 	const [modal, setModal] = useState<boolean>(false);
@@ -16,30 +16,30 @@ const Modal = () => {
 	};
 
 	return (
-		<div className={`modal-wrapper ${modal ? "no-scroll" : ""}`}>
-			<button onClick={toggleModal} className="btn-modal">
+		<div className={`${styles.modalWrapper} ${modal ? styles.noScroll : ""}`}>
+			<button onClick={toggleModal} className={styles.btnModal}>
 				ساخت تمرین
 			</button>
 
 			{modal && (
-				<div className="modal show" aria-hidden={!modal} aria-modal="true">
-					<div onClick={toggleModal} className="overlay"></div>
-					<div className="modal-content">
-						<h2 className="modal-title">ساخت تمرین</h2>
+				<div className={styles.modalShow} aria-hidden={!modal} aria-modal="true">
+					<div onClick={toggleModal} className={styles.overlay}></div>
+					<div className={styles.modalContent}>
+						<h2 className={styles.modalTitle}>ساخت تمرین</h2>
 						<textarea
-							className="modal-textarea"
+							className={styles.modalTextarea}
 							onChange={textAreaHandler}
 							value={newPracticeText}
 						></textarea>
 						<div
-							className={`char-limit ${char > 1000 ? "char-limit-red" : ""}`}
+							className={`char-limit ${char > 1000 ? styles.charLimitRed : ""}`}
 						>
 							{char}/1000
 						</div>
-						<button className="add-practice" role="button">
+						<button className={styles.addPractice} role="button">
 							شروع تمرین
 						</button>
-						<button className="pure-button close-modal" onClick={toggleModal}>
+						<button className={`pure-button ${styles.closeModal}`} onClick={toggleModal}>
 							بستن
 						</button>
 					</div>

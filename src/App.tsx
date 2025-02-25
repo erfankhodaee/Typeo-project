@@ -19,14 +19,13 @@ function App() {
     setIsShowScore(false);
   };
 
-  
+
 
   return (
     <div className="app-container">
       {!lessonsLeft && (
         <>
           <LessonContainer onLessonSelect={onLessonSelect} />
-          <Modal />
         </>
       )}
       {isShowScore && (
@@ -57,6 +56,10 @@ function App() {
           />
         </>
       )}
+      {!lessonsLeft && (
+        <Modal />
+      )}
+
     </div>
   );
 }
