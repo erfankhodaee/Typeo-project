@@ -134,6 +134,7 @@ const Typing = ({
                 accuracy: accuracy,
                 time: time,
                 mistakes: mistake,
+                done:true
               };
             } else {
               return item;
@@ -154,6 +155,7 @@ const Typing = ({
         accuracy: accuracy,
         mistakes: mistake,
         time: time,
+        
       });
     }
   };

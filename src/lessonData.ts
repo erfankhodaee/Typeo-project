@@ -10,6 +10,7 @@ export interface Lesson {
   speed?: null | number;
   mistakes?: null | number;
   accuracy?: null | string;
+  done?: boolean
 }
 
 const lessonData = <Lesson[]>[
@@ -19,7 +20,8 @@ const lessonData = <Lesson[]>[
     title: "React",
     description: "هر که بامش بیش برفش بیشتر",
     unlocked: true,
-    speed: null
+    speed: null,
+    done: true
   },
   {
     type: "درس",

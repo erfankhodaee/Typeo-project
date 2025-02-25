@@ -1,7 +1,7 @@
 import "purecss/build/pure.css";
 import { LuBookOpenText } from "react-icons/lu";
 import useLessonData, { Lesson } from "../../lessonData";
-
+import { LuBookOpenCheck } from "react-icons/lu";
 import styles from "./lessonsContainer.module.css";
 export interface Props {
 	onLessonSelect: (lesson: Lesson) => void;
@@ -27,7 +27,7 @@ const LessonContainer = ({ onLessonSelect }: Props) => {
 						>
 							<h3 className={styles.type}>{lesson.type}</h3>
 							<h3 className={styles.title}>{lesson.title}</h3>
-							<LuBookOpenText style={{ fontSize: "50px" }} />
+							{lesson.done ? <LuBookOpenCheck style={{ fontSize: "50px" }} /> : <LuBookOpenText style={{ fontSize: "50px" }} />}
 							<p className={`${styles.indexAbsolute}`}>{i + 1}</p>
 							{!lesson.unlocked && <div className={styles.blur}></div>}
 						</div>
