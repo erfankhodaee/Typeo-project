@@ -4,7 +4,7 @@ import { useState } from "react";
 import LessonContainer from "./components/LessonsContainer/LessonsContainer";
 import Modal from "./components/Modal/Modal";
 import Typing from "./components/Typing/Typing";
-import { Lesson } from "./lessonData";
+import useLessonData, { Lesson } from "./lessonData";
 import SideLessons from "./components/LessonsContainer/SideLessons";
 
 function App() {
@@ -13,25 +13,31 @@ function App() {
   const [isShowScore, setIsShowScore] = useState(false);
   const [score, setScore] = useState<Lesson>(Object);
 
+  const { lessonsData, setLessonsData } = useLessonData();
+
   const onLessonSelect = (lesson: Lesson) => {
     setLessonsLeft(true);
     setCurrentLesson(lesson);
     setIsShowScore(false);
   };
 
-  
-
   return (
     <div className="app-container">
       {!lessonsLeft && (
         <>
-          <LessonContainer onLessonSelect={onLessonSelect} />
-          <Modal />
+          <LessonContainer
+            onLessonSelect={onLessonSelect}
+            lessonsData={lessonsData}
+          />
+          <Modal setLessonsData={setLessonsData} />
         </>
       )}
       {isShowScore && (
         <>
-          <SideLessons onLessonSelect={onLessonSelect} />
+          <SideLessons
+            onLessonSelect={onLessonSelect}
+            lessonsData={lessonsData}
+          />
           <div className="scoreContainer">
             {Object.keys(score).map(function (key) {
               return (
@@ -45,7 +51,10 @@ function App() {
       )}
       {lessonsLeft && !isShowScore && (
         <>
-          <SideLessons onLessonSelect={onLessonSelect} />
+          <SideLessons
+            onLessonSelect={onLessonSelect}
+            lessonsData={lessonsData}
+          />
           <Typing
             title={currentLesson?.title}
             text={currentLesson?.description}
@@ -54,6 +63,7 @@ function App() {
             setIsShowScore={setIsShowScore}
             setScore={setScore}
             score={score}
+            setLessonsData={setLessonsData}
           />
         </>
       )}

@@ -4,7 +4,7 @@ import { VscDebugRestart } from "react-icons/vsc";
 import useAccuracyCalculate from "../../hooks/useAccuracyCalculate";
 import useSpeedCalculate from "../../hooks/useSpeedCalculate";
 import useTimeCalculate from "../../hooks/useTimeCalculate";
-import useLessonData, { Lesson } from "../../lessonData";
+import { Lesson } from "../../lessonData";
 import Accuracy from "../Accuracy/Accuracy";
 import Speed from "../Speed/Speed";
 import Timer from "../Timer/Timer";
@@ -17,6 +17,7 @@ interface Props {
   setIsShowScore: React.Dispatch<React.SetStateAction<boolean>>;
   setScore: React.Dispatch<React.SetStateAction<Lesson>>;
   score: Lesson;
+  setLessonsData: React.Dispatch<React.SetStateAction<Lesson[]>>;
 }
 
 const Typing = ({
@@ -26,6 +27,7 @@ const Typing = ({
   setIsShowScore,
   score,
   setScore,
+  setLessonsData,
 }: Props) => {
   const [sound, setSound] = useState(true);
   const [invisibleInput, setInvisibleInput] = useState("");
@@ -96,7 +98,7 @@ const Typing = ({
 
   // getting data from dummy data
 
-  const { lessonsData, setLessonsData } = useLessonData();
+  // const { lessonsData, setLessonsData } = useLessonData();
 
   // handling logic for invisbleinput
   const invisibleInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -134,6 +136,7 @@ const Typing = ({
                 accuracy: accuracy,
                 time: time,
                 mistakes: mistake,
+                stars: 3,
               };
             } else {
               return item;
@@ -154,6 +157,7 @@ const Typing = ({
         accuracy: accuracy,
         mistakes: mistake,
         time: time,
+        stars: 3,
       });
     }
   };
