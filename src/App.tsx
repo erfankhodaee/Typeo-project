@@ -21,6 +21,11 @@ function App() {
     setIsShowScore(false);
   };
 
+  const setBack = () => {
+    setLessonsLeft(false);
+    setIsShowScore(false);
+  };
+
   return (
     <div className="app-container">
       {!lessonsLeft && (
@@ -47,6 +52,7 @@ function App() {
               );
             })}
           </div>
+          <button onClick={setBack}>بازگشت به صفحه اصلی</button>
         </>
       )}
       {lessonsLeft && !isShowScore && (
@@ -65,6 +71,7 @@ function App() {
             score={score}
             setLessonsData={setLessonsData}
           />
+          <button onClick={setBack}>بازگشت به صفحه اصلی</button>
         </>
       )}
     </div>

@@ -2,6 +2,7 @@ import "purecss/build/pure.css";
 import { useEffect, useState } from "react";
 import { LuBookOpenText } from "react-icons/lu";
 import { Lesson } from "../../lessonData";
+import { ToPersianNumber } from "topersiannumber";
 import styles from "./lessonsContainer.module.css";
 export interface Props {
   onLessonSelect: (lesson: Lesson) => void;
@@ -20,14 +21,17 @@ const LessonContainer = ({ onLessonSelect, lessonsData }: Props) => {
       return sum;
     }, 0);
 
-    setAvgSpeed(totalSpeed / count);
+    setAvgSpeed(+(totalSpeed / count).toFixed(0));
   }, [lessonsData]);
   return (
     <>
       <div className={styles.container}>
         <div className={styles.average}>
-          <div className={styles.averageSpeed}> {avgSpeed}:میانگین سرعت</div>
-          <div className={styles.stars}>ستاره ها 0</div>
+          <div className={styles.averageSpeed}>
+            {" "}
+            {ToPersianNumber(avgSpeed)}:میانگین سرعت
+          </div>
+          <div className={styles.stars}>ستاره ها {ToPersianNumber(0)}</div>
         </div>
 
         <div className={` ${styles.grid} pure-g`}>
@@ -45,7 +49,9 @@ const LessonContainer = ({ onLessonSelect, lessonsData }: Props) => {
                   <span key={i}>⭐</span>
                 ))}
               </div>
-              <p className={`${styles.indexAbsolute}`}>{i + 1}</p>
+              <p className={`${styles.indexAbsolute}`}>
+                {ToPersianNumber(i + 1)}
+              </p>
               {!lesson.unlocked && <div className={styles.blur}></div>}
             </div>
           ))}

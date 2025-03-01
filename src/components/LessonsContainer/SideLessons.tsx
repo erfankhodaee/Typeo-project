@@ -3,6 +3,7 @@ import { LuBookOpenText } from "react-icons/lu";
 import type { Lesson } from "../../lessonData";
 import styles from "./sideLessons.module.css";
 import { memo } from "react";
+import { ToPersianNumber } from "topersiannumber";
 interface Props {
   onLessonSelect: (lesson: Lesson) => void;
   lessonsData: Lesson[];
@@ -25,7 +26,7 @@ const SideLessons = ({ onLessonSelect, lessonsData }: Props) => {
               {Array.from({ length: lesson.stars ?? 0 }, (_, i) => (
                 <span key={i}>⭐</span>
               ))}
-              <p className={`${styles.indexAbsolute}`}>{i + 1}</p>
+              <p className={`${styles.indexAbsolute}`}>{ToPersianNumber(i + 1)}</p>
               {!lesson.unlocked && <div className={styles.blur}></div>}
             </div>
           ))}

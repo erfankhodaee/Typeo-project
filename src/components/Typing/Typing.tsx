@@ -9,6 +9,7 @@ import Accuracy from "../Accuracy/Accuracy";
 import Speed from "../Speed/Speed";
 import Timer from "../Timer/Timer";
 import styles from "./typing.module.css";
+import { ToPersianNumber } from "topersiannumber";
 
 interface Props {
   text?: string;
@@ -52,24 +53,24 @@ const Typing = ({
       if (char === invisibleInput[index]) {
         return (
           <span key={index} className={styles.correctChar}>
-            {char}
+            {ToPersianNumber(char)}
           </span>
         );
       } else {
         return (
           <span key={index} className={styles.incorrectChar}>
-            {char}
+            {ToPersianNumber(char)}
           </span>
         );
       }
     } else if (index === invisibleInput.length) {
       return (
         <span key={index} className={styles.currentChar}>
-          {char}
+          {ToPersianNumber(char)}
         </span>
       );
     }
-    return <span key={index}>{char}</span>;
+    return <span key={index}>{ToPersianNumber(char)}</span>;
   });
 
   // forcing keyboard key to be registered only on invisble input

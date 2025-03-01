@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./modal.css";
 import { Lesson } from "../../lessonData";
+import { ToPersianNumber } from "topersiannumber";
 
 interface modalProps {
   setLessonsData: React.Dispatch<React.SetStateAction<Lesson[]>>;
@@ -62,7 +63,7 @@ const Modal = ({ setLessonsData }: modalProps) => {
             <div
               className={`char-limit ${char > 1000 ? "char-limit-red" : ""}`}
             >
-              {char}/1000
+              {ToPersianNumber(char)}/{ToPersianNumber(1000)}
             </div>
 
             <button className="pure-button close-modal" onClick={toggleModal}>
