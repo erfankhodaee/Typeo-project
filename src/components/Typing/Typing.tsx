@@ -133,7 +133,7 @@ const Typing = ({
             if (item.id === id) {
               return {
                 ...item,
-                speed: +speed,
+                speed: +speed > 160 ? 160 : +speed,
                 accuracy: accuracy,
                 time: time,
                 mistakes: mistake,
@@ -154,7 +154,7 @@ const Typing = ({
       setIsShowScore(true);
       setScore({
         ...score,
-        speed: +speed,
+        speed: +speed > 160 ? 160 : +speed,
         accuracy: accuracy,
         mistakes: mistake,
         time: time,

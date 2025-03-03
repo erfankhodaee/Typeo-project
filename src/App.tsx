@@ -30,15 +30,25 @@ function App() {
   const goPrevLesson = () => {
     setIsShowScore(false);
     setCurrentLesson((prev) => {
-      if (prev && prev.id >= 2) {
-        const currentIndex = lessonsData.findIndex(
-          (lesson) => lesson.id === prev.id
-        );
-        if (currentIndex > 0) {
-          return lessonsData[currentIndex - 1];
-        }
-        return prev;
+      const currentIndex = lessonsData.findIndex(
+        (lesson) => lesson.id === prev?.id
+      );
+      if (currentIndex > 0) {
+        return lessonsData[currentIndex - 1];
       }
+      return prev;
+    });
+  };
+  const goNextLesson = () => {
+    setIsShowScore(false);
+    setCurrentLesson((prev) => {
+      const currentIndex = lessonsData.findIndex(
+        (lesson) => lesson.id === prev?.id
+      );
+      if (currentIndex < lessonsData.length - 1) {
+        return lessonsData[currentIndex + 1];
+      }
+      return prev;
     });
   };
 
@@ -69,6 +79,7 @@ function App() {
             })}
           </div>
           <button onClick={goPrevLesson}>درس قبلی</button>
+          <button onClick={goNextLesson}>درس بعدی</button>
           <button onClick={setBack}>بازگشت به صفحه اصلی</button>
         </>
       )}
