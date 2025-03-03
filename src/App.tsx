@@ -6,6 +6,7 @@ import Modal from "./components/Modal/Modal";
 import Typing from "./components/Typing/Typing";
 import useLessonData, { Lesson } from "./lessonData";
 import SideLessons from "./components/LessonsContainer/SideLessons";
+import { ToPersianNumber } from "topersiannumber";
 
 function App() {
   const [lessonsLeft, setLessonsLeft] = useState(false);
@@ -24,6 +25,21 @@ function App() {
   const setBack = () => {
     setLessonsLeft(false);
     setIsShowScore(false);
+  };
+
+  const goPrevLesson = () => {
+    setIsShowScore(false);
+    setCurrentLesson((prev) => {
+      if (prev && prev.id >= 2) {
+        const currentIndex = lessonsData.findIndex(
+          (lesson) => lesson.id === prev.id
+        );
+        if (currentIndex > 0) {
+          return lessonsData[currentIndex - 1];
+        }
+        return prev;
+      }
+    });
   };
 
   return (
@@ -47,11 +63,12 @@ function App() {
             {Object.keys(score).map(function (key) {
               return (
                 <div>
-                  {key}: {score[key]}
+                  {key}: {ToPersianNumber(score[key])}
                 </div>
               );
             })}
           </div>
+          <button onClick={goPrevLesson}>درس قبلی</button>
           <button onClick={setBack}>بازگشت به صفحه اصلی</button>
         </>
       )}
